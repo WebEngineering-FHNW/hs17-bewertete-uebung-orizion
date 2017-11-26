@@ -20,6 +20,8 @@ How to test the project:  (if other than `grailsw test-app`)
 
 Project description:      (if other than `/index.html`)
 
+I will be doing the Socrative Light Project
+
 External contributions:
 
 Other comments: 
