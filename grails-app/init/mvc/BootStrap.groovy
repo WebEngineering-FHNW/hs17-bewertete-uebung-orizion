@@ -1,5 +1,7 @@
 package mvc
 
+import edu.fhnw.webec.socrativelight.Answer
+import edu.fhnw.webec.socrativelight.Question
 import grails.util.Environment
 
 class BootStrap {
@@ -20,6 +22,12 @@ class BootStrap {
         save(new Booking(booker: dierk, room: windowRoom, date: today + 1, slot: Booking.AM))
         save(new Booking(booker: dierk, room: cornerRoom, date: today ,    slot: Booking.AM))
 
+        Question q1 = new Question(text: "Is this the real life?")
+
+
+        save(new Answer(text: "this is just fantasy",question: q1))
+        save(new Answer(text: "caught in a landslide",question: q1))
+        save(new Answer(text: "escape from reality",question: q1))
     }
 
     static save(domainObject) {
