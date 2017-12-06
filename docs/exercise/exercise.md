@@ -6,10 +6,12 @@ Matriculation Number: 14-469-357
 
 Project idea short description: 
 
+I will be doing the Socrative Light Project
+
 
 ## Project confirmation
 
-< to be filled by lecturer>
+confirmed.
 
 
 ## Project delivery <to be filled by student>
@@ -20,7 +22,6 @@ How to test the project:  (if other than `grailsw test-app`)
 
 Project description:      (if other than `/index.html`)
 
-I will be doing the Socrative Light Project
 
 External contributions:
 
