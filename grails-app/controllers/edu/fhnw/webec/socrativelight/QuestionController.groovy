@@ -30,9 +30,9 @@ class QuestionController {
             withFormat {
                 html {
                     flash.message = message(code: 'default.created.message', args: [message(code: 'book.label', default: 'Book'), book.id])
-                    redirect question
+                    redirect(action: "index")
                 }
-                '*' { render status: 201 }
+                '*' { redirect(action: "index") }
             }
         }
     }
