@@ -14,6 +14,8 @@
 <form action="/question/save" method="post">
     <fieldset class="form padded">
         <input type="text" name="text" />
+        <label for="isMultipleChoice" >multiple choice question</label>
+        <input type="checkbox" name="isMultipleChoice" id="isMultipleChoice">
         <div>
             <label>&nbsp;</label>
             <input type="submit" value="Save"/>

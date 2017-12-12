@@ -30,10 +30,19 @@ class QuestionController {
             withFormat {
                 html {
                     flash.message = message(code: 'default.created.message', args: [message(code: 'book.label', default: 'Book'), book.id])
-                    redirect(action: "index")
+                    redirect(action: "show", id: question.id)
                 }
-                '*' { redirect(action: "index") }
+                '*' {  redirect(action: "show", id: question.id)}
             }
         }
+    }
+
+    @Transactional
+    def addanswer() {
+            def answer = new Answer(question: Question.get(params.question_id),isCorrect: params.isCorrect, text: params.text)
+
+            answer.save(flush: true)
+            println answer
+            redirect(action: "show", id: params.question_id)
     }
 }
