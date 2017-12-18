@@ -11,14 +11,7 @@
 
 <body>
 <g:each var="question" in="${questions}">
-    <li>${question.text}
-        <g:if test="${question.isMultipleChoice}">
-            multi
-        </g:if>
-        <g:else>
-            NOT multi
-        </g:else>
-    </li>
+    <li>${question.text}</li>
 </g:each>
 </body>
 

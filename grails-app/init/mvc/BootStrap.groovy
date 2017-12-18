@@ -23,9 +23,9 @@ class BootStrap {
         save(new Booking(booker: dierk, room: cornerRoom, date: today ,    slot: Booking.AM))
 
         Question q1 = new Question(text: "Is this the real life?")
+        q1.save()
 
-
-        save(new Answer(text: "this is just fantasy",question: q1))
+        save(new Answer(text: "this is just fantasy",question: q1, isCorrect: true))
         save(new Answer(text: "caught in a landslide",question: q1))
         save(new Answer(text: "escape from reality",question: q1))
     }

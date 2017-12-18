@@ -8,6 +8,8 @@ class Answer {
     static belongsTo = [question: Question]
 
     static constraints = {
+        question blank:false
+        text blank: false
     }
 
     @Override

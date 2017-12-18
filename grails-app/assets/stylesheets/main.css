@@ -569,16 +569,34 @@ a.skip {
 }
 
 img.grails-logo {
-    height:340px;
-    margin-top:-10px;
+    height:34rem;
+    margin-top:-1rem;
 }
 
 
 .answer-list {
-    margin-bottom: 15px;
+    margin: 1.5rem;
+
 }
 
 .answer-form-container {
+    margin:1rem;
+}
 
+.mainlink {
+    background-color: #4cae4c;
+    margin: 1rem;
+    padding: 1rem;
+    color: whitesmoke;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.title {
+    color:whitesmoke;
+}
+
+#content {
+    margin-top: 3rem;
 }
 
