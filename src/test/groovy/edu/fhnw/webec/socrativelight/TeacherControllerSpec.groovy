@@ -4,7 +4,6 @@ import grails.test.mixin.TestFor
 import grails.test.mixin.integration.Integration
 import org.springframework.test.annotation.Rollback
 import spock.lang.Specification
-import spock.lang.Unroll
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
@@ -26,28 +25,12 @@ class TeacherControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test controller adds questions correctly"() {
         given:
-            setupData()
+            String text = "Text string gontaining sp€¢ïàlchärs"
+        when:
+            controller.save(new Question(text:text))
         expect:
-            Question.count() == 1
-    }
-
-
-
-
-    @Unroll
-    void "saving a question with text #text"(text) {
-        given:
-            def q = new Question(text: text)
-        when: "Text"
-            controller.save(q)
-        then: "The question is saved with #text"
-            q.text == text
-        where:
-            text << ["This is the first Question",
-                     "SéNDèRZèïCH@n",
-                     "Test test"]
-
+            Question.get(1).text == text
     }
 }

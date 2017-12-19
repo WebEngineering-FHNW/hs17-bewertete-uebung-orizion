@@ -10,6 +10,9 @@
             <tr>
                 <th>Answer</th>
                 <th>Correct</th>
+                <g:if test="${answerCount != null}">
+                    <th>Times this answer was chosen</th>
+                </g:if>
             </tr>
             </thead>
             <tbody>

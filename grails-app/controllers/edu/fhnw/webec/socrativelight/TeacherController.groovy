@@ -59,37 +59,37 @@ class TeacherController {
         }
     }
 
-    def showresults() {
+    /**
+     * Calculate how often the correct answer for each question was given
+     * @return the report view showing the report result
+     */
+    def show_report_correct_answers() {
         def questions = Question.getAll()
-        def sas = SubmittedAnswer.getAll()
-        //evaluate results for every teacher
         def correctCount = [:]
         def answerCount = [:]
+        //evaluate results for every teacher
         for(question in questions) {
             def results = SubmittedAnswer.findAllByQuestion(question)
             def groupedSubmissions = results.groupBy {sa -> sa.submissionId}
             def correctAnswers = question.answers.findAll {a-> a.isCorrect}
             def correctAnswersCount = 0
-            answerCount[question.id] = groupedSubmissions.size()
 
+            answerCount[question.id] = groupedSubmissions.size()
 
             //check result sets
             SUBMISSION:
             for(submission in groupedSubmissions) {
-                //if not the same number of answers was given, we can
-                //declare it to be wrong from the start
-
+                //if not the same number of answers was given as are declared correct, we can
+                //declare it to be wrong
                 if(correctAnswers.size()
                         != submission.value.size()) {
-                    //do smtn if wrongly answered
-                    println("count isnt the same bro")
+                    continue SUBMISSION
                 }
                 //search if all correct answers are present
                 //we dont need to check if more than the correct ones are present, as we already ensured
                 //equality in number of answers
                 for(answer in correctAnswers) {
                     if(null == submission.value.find {a -> a.answerId == answer.id}) {
-                        println("wrong answers")
                         continue SUBMISSION
                     }
                 }
@@ -98,9 +98,13 @@ class TeacherController {
             correctCount[question.id] = correctAnswersCount
         }
 
-        render view: "showresults", model: [questions: questions, correctCount: correctCount, answerCount: answerCount]
+        render view: "show_report_correct_answers", model: [questions: questions, correctCount: correctCount, answerCount: answerCount]
     }
 
+    /**
+     * Generates the report showing the number of times each question was chosen
+     * @return the report view
+     */
     def show_report() {
         def questions = Question.getAll()
         def results = SubmittedAnswer.findAll()
