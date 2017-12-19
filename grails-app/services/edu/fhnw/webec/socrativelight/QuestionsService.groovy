@@ -3,6 +3,10 @@ package edu.fhnw.webec.socrativelight
 import grails.transaction.Transactional
 
 class QuestionsService {
+    @Transactional
+    def find(id) {
+        return Question.get(id)
+    }
 
     @Transactional(readOnly = true)
     def listQuestions() {

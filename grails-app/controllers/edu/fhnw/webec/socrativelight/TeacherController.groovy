@@ -8,18 +8,36 @@ class TeacherController {
 
     //static scaffold = Question
 
+    /**
+     * Displays all questions with their answers
+     * @return
+     */
     def index() {
         render view: "index", model: [questions: questionsService.listQuestions()]
     }
 
+    /**
+     * Question show view
+     * @param question
+     * @return
+     */
     def show(Question question) {
         render view: "show", model: [question: question]
     }
 
+    /**
+     * Question create view
+     * @return
+     */
     def create() {
         render view: "create"
     }
 
+    /**
+     * saves a question
+     * @param question
+     * @return
+     */
     @Transactional
     def save(Question question) {
         if(question.hasErrors()) {
@@ -31,26 +49,35 @@ class TeacherController {
         }
     }
 
+    /**
+     * Adds an answer to a question
+     * @return
+     */
     @Transactional
     def addanswer() {
         def isCorrect = false
         if(params.isCorrect != null) {
             isCorrect = true
         }
-        if(Question.exists(question_id)) {
-            def answer = new Answer(question_id: params.question_id,isCorrect: isCorrect, text: params.text)
+        println("we add answers")
+        if(Question.exists(params.question_id)) {
+            def q = questionsService.find(params.question_id)
+            def answer = new Answer(question: q,isCorrect: isCorrect, text: params.text)
+                println(answer)
             if(answer.hasErrors()) {
                 respond answer.errors, view:'show', id: params.question_id
             }else {
                 questionsService.add_answer(answer)
                 redirect(action: "show", id: params.question_id)
             }
-        }else {
-
         }
-
     }
 
+    /**
+     * Removes an answer from a question
+     * @param answer
+     * @return
+     */
     @Transactional
     def removeanswer(Answer answer) {
         if(Answer.exists(answer.id)){

@@ -38,7 +38,13 @@
                     </li>
                     <li>
                         <a href="/teacher/show_report" >
-                            View Report of all Questions
+                            View Report #1
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/teacher/show_report_correct_answers" >
+                            View Report #2
                         </a>
                     </li>
 

@@ -20,7 +20,7 @@
         <div class="checkbox">
             <label for="isCorrect">
                 <input type="checkbox" name="isCorrect" id="isCorrect">
-                Is the correct answer
+                Is the correct answer?
             </label>
         </div>
         <g:submitButton name="Submit" value="Add Answer"  class="form-control btn-primary" />

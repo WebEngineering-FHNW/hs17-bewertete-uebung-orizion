@@ -15,7 +15,7 @@
 <div class="answer-list">
     <h3>Answers:</h3>
     <g:if test="${question.answers.size() > 0}">
-        <form action="/student/submit_answers" method="post">
+        <form action="/student/submit_answer" method="post">
             <input type="hidden" name="question_id" value="${question.id}" />
             <g:each var="answer" in="${question.answers}">
                 <div class="checkbox">
@@ -25,7 +25,7 @@
                     </label>
                 </div>
             </g:each>
-            <g:submitButton name="Submit" value="Submit Answers"  class="btn btn-primary" />
+            <g:submitButton name="Submit" value="Submit Answer"  class="btn btn-primary" />
         </form>
     </g:if>
     <g:else>

@@ -19,13 +19,28 @@ class StudentController {
     }
 
     /**
-     * Saves a students selected answers
+     * Saves a students selected answers to a question
      */
     @Transactional
-    def submit_answers() {
+    def submit_answer() {
         if(Question.exists(params.question_id)){
             List<String> answer_ids = params.list("answer_ids")
             questionsService.submit_answers(params.question_id,answer_ids)
+        }
+        redirect (controller: "teacher", action: "show_report")
+    }
+
+    /**
+     * Saves a students selected answers to a question
+     */
+    @Transactional
+    def submit_answers() {
+        def question_ids = params.list("question_ids")
+        for(question_id in question_ids) {
+            if(Question.exists(question_id)){
+                List<String> answer_ids = params.list("q_"+question_id+"_answer_ids")
+                questionsService.submit_answers(question_id,answer_ids)
+            }
         }
         redirect (controller: "teacher", action: "show_report")
     }

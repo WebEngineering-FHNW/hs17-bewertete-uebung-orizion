@@ -1,6 +1,10 @@
 <div>
     <div class="panel panel-default">
-        <div class="panel-heading">Question ${question.id}</div>
+        <div class="panel-heading">
+            <a href="/teacher/show/${question.id}">
+                Question ${question.id}
+            </a>
+        </div>
         <div class="panel-body">${question.text}</div>
     </div>
     <div class="answer-list">
@@ -14,6 +18,7 @@
                 <g:if test="${answerCount != null}">
                     <th>Times this answer was chosen</th>
                 </g:if>
+                <th></th>
             </tr>
             </thead>
             <tbody>
