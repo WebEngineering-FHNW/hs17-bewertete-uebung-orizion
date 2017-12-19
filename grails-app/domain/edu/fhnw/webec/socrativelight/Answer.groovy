@@ -8,8 +8,9 @@ class Answer {
     static belongsTo = [question: Question]
 
     static constraints = {
-        question
+        question blank: false
         text blank: false, minSize: 10
+        isCorrect blank: false
     }
 
     @Override

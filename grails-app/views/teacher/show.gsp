@@ -25,6 +25,9 @@
         </div>
         <g:submitButton name="Submit" value="Add Answer"  class="form-control btn-primary" />
     </form>
+    <div style="color: red">
+        <g:renderErrors bean="${question}" />
+    </div>
 </div>
 
 </body>

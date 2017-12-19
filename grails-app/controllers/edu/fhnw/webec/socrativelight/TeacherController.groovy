@@ -9,11 +9,10 @@ class TeacherController {
     //static scaffold = Question
 
     def index() {
-        render view: "index", model: [questions: Question.findAll()]
+        render view: "index", model: [questions: questionsService.listQuestions()]
     }
 
     def show(Question question) {
-        //def answers = Answer.findAllByQuestion(teacher)
         render view: "show", model: [question: question]
     }
 
@@ -28,13 +27,7 @@ class TeacherController {
         }
         else {
             questionsService.save(question)
-            withFormat {
-                html {
-                    flash.message = message(code: 'default.created.message', args: [message(code: 'book.label', default: 'Book'), book.id])
-                    redirect(action: "show", id: question.id)
-                }
-                '*' {  redirect(action: "show", id: question.id)}
-            }
+            redirect(action: "show", id: question.id)
         }
     }
 
@@ -44,8 +37,18 @@ class TeacherController {
         if(params.isCorrect != null) {
             isCorrect = true
         }
-        questionsService.add_answer(params.question_id, isCorrect, params.text)
-        redirect(action: "show", id: params.question_id)
+        if(Question.exists(question_id)) {
+            def answer = new Answer(question_id: params.question_id,isCorrect: isCorrect, text: params.text)
+            if(answer.hasErrors()) {
+                respond answer.errors, view:'show', id: params.question_id
+            }else {
+                questionsService.add_answer(answer)
+                redirect(action: "show", id: params.question_id)
+            }
+        }else {
+
+        }
+
     }
 
     @Transactional
@@ -68,11 +71,11 @@ class TeacherController {
             def correctAnswers = question.answers.findAll {a-> a.isCorrect}
             def correctAnswersCount = 0
             answerCount[question.id] = groupedSubmissions.size()
-            println(groupedSubmissions)
+
+
             //check result sets
             SUBMISSION:
             for(submission in groupedSubmissions) {
-                //println(submission)
                 //if not the same number of answers was given, we can
                 //declare it to be wrong from the start
 
@@ -98,7 +101,7 @@ class TeacherController {
         render view: "showresults", model: [questions: questions, correctCount: correctCount, answerCount: answerCount]
     }
 
-    def showresultsaslist() {
+    def show_report() {
         def questions = Question.getAll()
         def results = SubmittedAnswer.findAll()
 
@@ -113,6 +116,6 @@ class TeacherController {
 
         }
 
-        render view: "showresultsaslist", model: [questions: questions, answerCount: answerCount]
+        render view: "show_report", model: [questions: questions, answerCount: answerCount]
     }
 }

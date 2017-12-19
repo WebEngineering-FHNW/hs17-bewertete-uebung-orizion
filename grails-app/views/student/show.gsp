@@ -14,7 +14,7 @@
 
 <div class="answer-list">
     <h3>Answers:</h3>
-    <form action="/student/submitanswers" method="post">
+    <form action="/student/submit_answers" method="post">
         <input type="hidden" name="question_id" value="${question.id}" />
         <g:each var="answer" in="${question.answers}">
             <div class="checkbox">

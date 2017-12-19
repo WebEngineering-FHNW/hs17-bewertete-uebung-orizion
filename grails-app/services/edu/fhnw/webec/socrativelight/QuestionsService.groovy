@@ -2,17 +2,20 @@ package edu.fhnw.webec.socrativelight
 
 import grails.transaction.Transactional
 
-@Transactional
 class QuestionsService {
 
+    @Transactional(readOnly = true)
+    def listQuestions() {
+        return Question.findAll().sort()
+    }
+
+    @Transactional
     def save(Question question) {
         question.save flush:true
     }
 
-    def add_answer(question_id, isCorrect, text) {
-        if(Question.exists(question_id)) {
-            def answer = new Answer(question: Question.get(question_id), isCorrect: isCorrect, text: text)
-            answer.save(flush: true)
-        }
+    @Transactional
+    def add_answer(Answer answer) {
+        answer.save(flush: true)
     }
 }

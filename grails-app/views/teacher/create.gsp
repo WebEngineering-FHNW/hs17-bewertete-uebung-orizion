@@ -24,6 +24,13 @@
                 </div>
             </fieldset>
         </form>
+
+        <div style="color: red">
+            <g:renderErrors bean="${question}" />
+        </div>
+
+
+
     </div>
 </div>
 

@@ -3,8 +3,11 @@ package edu.fhnw.webec.socrativelight
 import grails.transaction.Transactional
 
 class StudentController {
+    def questionsService
 
-    def index() { }
+    def index() {
+        render view:"index", model: [questions: questionsService.listQuestions()]
+    }
 
     /**
      * Show a single question to the user

@@ -31,7 +31,27 @@
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/teacher/" >
+                            List of all questions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/teacher/show_report" >
+                            View Report of all Questions
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/teacher/create" >
+                            Create a Question
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/student/" >
+                            Answer the questions
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

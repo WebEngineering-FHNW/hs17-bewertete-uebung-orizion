@@ -9,7 +9,7 @@
             <thead>
             <tr>
                 <th>Answer</th>
-                <th>Correct answer?</th>
+                <th>Correct</th>
             </tr>
             </thead>
             <tbody>
@@ -23,11 +23,18 @@
                             Yes
                         </td>
                     </g:if>
+
                     <g:else>
                         <td class="danger">
                             No
                         </td>
                     </g:else>
+
+                    <g:if test="${answerCount != null}">
+                        <td>
+                            ${answerCount[answer.id]}
+                        </td>
+                    </g:if>
                 </tr>
             </g:each>
             </tbody>

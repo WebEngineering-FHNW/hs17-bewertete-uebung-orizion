@@ -1,5 +1,9 @@
 package edu.fhnw.webec.socrativelight
 
+/**
+ * For every answer selected as a possible answer,
+ * a SubmittedAnswer is created
+ */
 class SubmittedAnswer {
     Question question
     Answer answer
@@ -11,7 +15,9 @@ class SubmittedAnswer {
 
 
     static constraints = {
-
+        submissionId min: 1,blank: false
+        question blank: false
+        answer blank: false
     }
 
     @Override
