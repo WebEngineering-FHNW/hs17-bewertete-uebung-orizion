@@ -7,7 +7,7 @@ class Question {
     static hasMany = [answers:Answer]
 
     static mapping = {
-        answers cascade: 'all-delete-orphan', sort:'id', order:'desc'
+        answers cascade: 'all-delete-orphan', sort:'id', order:'asc'
     }
 
     static constraints = {

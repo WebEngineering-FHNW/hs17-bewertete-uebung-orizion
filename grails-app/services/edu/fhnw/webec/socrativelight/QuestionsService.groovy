@@ -6,7 +6,7 @@ class QuestionsService {
 
     @Transactional(readOnly = true)
     def listQuestions() {
-        return Question.findAll().sort()
+        return Question.getAll()
     }
 
     @Transactional

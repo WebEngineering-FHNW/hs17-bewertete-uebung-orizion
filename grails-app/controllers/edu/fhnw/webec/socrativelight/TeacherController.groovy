@@ -52,11 +52,12 @@ class TeacherController {
     }
 
     @Transactional
-    def removeanswer() {
-        if(Answer.exists(params.id)){
-            def a = Answer.get(params.id)
+    def removeanswer(Answer answer) {
+        if(Answer.exists(answer.id)){
+            def a = Answer.get(answer.id)
             a.delete()
         }
+        redirect action:"show", id: answer.question.id
     }
 
     /**
