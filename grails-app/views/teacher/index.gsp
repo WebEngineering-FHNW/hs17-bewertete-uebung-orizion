@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta name="layout" content="form"/>
+    <meta name="layout" content="main"/>
     <title>
         Create Question
     </title>
@@ -11,7 +11,7 @@
 
 <body>
 <g:each var="question" in="${questions}">
-    <li>${question.text}</li>
+    <tmpl:question_listing question="${question}"/>
 </g:each>
 </body>
 

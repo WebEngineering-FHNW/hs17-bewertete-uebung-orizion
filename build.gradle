@@ -61,6 +61,7 @@ dependencies {
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.gebish:geb-core:1.1.1"
     testCompile "org.grails.plugins:geb"
+    testCompile "org.grails.plugins:hibernate5"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 }

@@ -11,6 +11,6 @@ class Question {
     }
 
     static constraints = {
-        text blank:false
+        text blank:false, minSize: 10
     }
 }

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta name="layout" content="form"/>
+    <meta name="layout" content="main"/>
     <title>
         Create Question
     </title>
@@ -11,17 +11,23 @@
 
 <body>
 
-<form action="/teacher/save" method="post">
-    <fieldset class="form padded">
-        <input type="text" name="text" />
-        <label for="isMultipleChoice" >multiple choice question</label>
-        <input type="checkbox" name="isMultipleChoice" id="isMultipleChoice">
-        <div>
-            <label>&nbsp;</label>
-            <input type="submit" value="Save"/>
-        </div>
-    </fieldset>
-</form>
+<div class="row">
+    <div class="col-md-6 col-lg-4 ">
+        <form action="/teacher/save" method="post" class="form">
+            <fieldset class="form padded">
+                <div class="form-group">
+                    <label>Text for Question</label>
+                    <input type="text" name="text"  class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <g:submitButton name="Submit" value="Save Question"  class="form-control btn-primary" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
 
 
 </body>

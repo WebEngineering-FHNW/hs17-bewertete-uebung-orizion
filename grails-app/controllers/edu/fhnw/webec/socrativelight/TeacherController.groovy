@@ -2,8 +2,9 @@ package edu.fhnw.webec.socrativelight
 
 import grails.transaction.Transactional
 
-
 class TeacherController {
+
+    def questionsService
 
     //static scaffold = Question
 
@@ -26,7 +27,7 @@ class TeacherController {
             respond question.errors, view:'create'
         }
         else {
-            question.save flush:true
+            questionsService.save(question)
             withFormat {
                 html {
                     flash.message = message(code: 'default.created.message', args: [message(code: 'book.label', default: 'Book'), book.id])
@@ -39,12 +40,12 @@ class TeacherController {
 
     @Transactional
     def addanswer() {
-        if(Question.exists(params.question_id)) {
-            def isCorrect = params.isCorrect == null ? false : params.isCorrect
-            def answer = new Answer(question: Question.get(params.question_id), isCorrect: isCorrect, text: params.text)
-            answer.save(flush: true)
-            redirect(action: "show", id: params.question_id)
+        def isCorrect = false
+        if(params.isCorrect != null) {
+            isCorrect = true
         }
+        questionsService.add_answer(params.question_id, isCorrect, params.text)
+        redirect(action: "show", id: params.question_id)
     }
 
     @Transactional
