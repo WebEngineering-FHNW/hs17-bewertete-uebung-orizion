@@ -62,9 +62,9 @@ class TeacherController {
         println("we add answers")
         if(Question.exists(params.question_id)) {
             def q = questionsService.find(params.question_id)
-            def answer = new Answer(question: q,isCorrect: isCorrect, text: params.text)
+            def answer = new Answer(question: q,isCorrect: isCorrect, text: params.text)			
                 println(answer)
-            if(answer.hasErrors()) {
+            if(answer.hasErrors()) { // at this point, you will never get an error since you did not validate
                 respond answer.errors, view:'show', id: params.question_id
             }else {
                 questionsService.add_answer(answer)

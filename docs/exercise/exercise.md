@@ -32,4 +32,15 @@ I'm particular proud of:
 
 ## Project grading 
 
-< to be filled by lecturer>
+No html description.
+The application starts but swallows errors, e.g. when creating a new
+question and then trying to add answers to it.
+
+The functionality is a bit questionable but the engineering is overall ok.
+Some more tests would have helped.
+
+I award two extra points for using the Grails service abstraction and
+the use of Web MVC, incl. view templates.
+
+Total grade: 5.1
+
